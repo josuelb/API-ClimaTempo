@@ -42,12 +42,17 @@ if TipodeConsulta == 2:
     iURL = f"http://apiadvisor.climatempo.com.br/api/v1/weather/locale/{iNEWCITY}/current?token={token}"
     iRESPONSE = requests.request("GET", iURL)
     iRETORNO = json.loads(iRESPONSE.text)
-
-    ID = iRETORNO['id']
-    name = iRETORNO['name']
-    state = iRETORNO['state']
-    country = iRETORNO['country']
     data = iRETORNO['data']
-    print(f'\nID: {ID}  Cidade: {name}-{state}  País: {country}')
-    print(f'Temperatura: {data["temperature"]}')
+    returno = {
+        'ID': iRETORNO['id'],
+        'Name': iRETORNO['name'],
+        'Estado': iRETORNO['state'],
+        'Pais': iRETORNO['country'],
+        'Dados': {
+            'Condicao': data['condition'],
+            'Temperatura': data['temperature'],
+            'Sensacao termica': data['sensation']
+        },
+        'Data-Hora': data['date']
+    }
 
