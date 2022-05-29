@@ -16,16 +16,16 @@ def home():
 
 @app.route('/clima-tempo')
 def clima_tempo():
-    data = f"""ID: {main.returno['ID']}
-    Cidade/UF: {main.returno['Name']} - {main.returno['Estado']}
-    País: {main.returno['Pais']}
-    Condição:{main.data['condition']}
-    Temperatura: {main.data['temperature']}
-    Sensação termica: {main.data['sensation']}
+    data = f"""ID: {main.returno['ID']},  
+    Cidade/UF: {main.returno['Name']} - {main.returno['Estado']}, 
+    País: {main.returno['Pais']}, 
+    Condição:{main.data['condition']}, 
+    Temperatura: {main.data['temperature']}, 
+    Sensação termica: {main.data['sensation']}, 
     Data-Hora: {main.data['date']}
     """
 
     return data
 
 
-app.run(debug=True)
+app.run()
